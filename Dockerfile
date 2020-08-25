@@ -1,11 +1,11 @@
-FROM python: 3.8-alpine
+FROM python:3.8-alpine
 
 MAINTAINER Simran
 
 ENV PATH="/scripts:${PATH}"
 
-COPY requirements.txt /requirements.txt
-RUN apk add --update --no-cache --virtual .tmp gcc libc-dev linux headers
+COPY ./requirements.txt /requirements.txt
+RUN apk add --update --no-cache --virtual .tmp gcc libc-dev linux-headers
 RUN pip install -r /requirements.txt
 RUN apk del .tmp
 
@@ -24,4 +24,4 @@ RUN chown -R user:user /vol
 RUN chmod -R 755 /vol/web
 USER user
 
-CMD["entrypoint.sh"]
+CMD ["entrypoint.sh"]
