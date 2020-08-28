@@ -1,14 +1,14 @@
 version: '3.7'
 
 services:
-  app:
+  blog:
     build:
       context: .
     volumes:
       - static_data:/vol/web
     environment:
       - SECRET_KEY=samplesecretkey123
-      - ALLOWED_HOSTS=127.0.0.1, localhost
+      - ALLOWED_HOSTS=127.0.0.1,192.168.43.50
   
   proxy:
     build:
@@ -18,7 +18,7 @@ services:
     ports:
       - "8090:8090"
     depends_on:
-      - app
+      - blog
 
 volumes:
   static_data:
