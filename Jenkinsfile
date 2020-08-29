@@ -1,9 +1,8 @@
-pipeline{
-	agent any{
-	stages{
+pipeline {
+	agent any
+	stages {
 		stage('clone repository') {
 	  	  checkout scm
 		}
-	}
 	}
 }
